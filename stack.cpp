@@ -1,7 +1,8 @@
 
 #include <cstdio>
 #define MAXSIZE 100
-#define ElemType int
+
+typedef int ElemType;
 
 typedef struct {
     ElemType elem[MAXSIZE];
