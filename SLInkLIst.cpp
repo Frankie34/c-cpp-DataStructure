@@ -56,7 +56,7 @@ char ListDelete_L(LNode &L0, int i) {
 int main() {
 
     LNode L_END = {0, NULL};
-    LNode L_STA = {000, &L_END};
+    LNode L_STA = {999, &L_END};
 
 
 

@@ -78,7 +78,7 @@ int main() {
     printf("元素1：\t");
     scanf("%d", &e1);
     printf("插入位置：\t");
-    scanf("%d%", &position);
+    scanf("%d", &position);
     printf("元素2：\t");
     scanf("%d", &e2);
 

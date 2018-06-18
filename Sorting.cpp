@@ -107,6 +107,6 @@ int main() {
         printf("%d\t",r[i].key);
     }
 
-
+    return 0；
 }
 
