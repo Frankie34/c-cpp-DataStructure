@@ -80,71 +80,71 @@ void levelTree(bintree t) {
     }
 }//用队列按层次遍历二叉树的算法
 
-void PrintTree(BTNode *bt, int level) 					/*按凹入法打印二叉树 level == 1 时输出完整树，其他情况输出第level 层的 bt 子树*/
-{ 	int i;
+void PrintTree(BTNode *bt, int level)                   /*按凹入法打印二叉树 level == 1 时输出完整树，其他情况输出第level 层的 bt 子树*/
+{   int i;
     if (bt) {
-        PrintTree(bt->rchild, level + 1); 				/*右子树第level+1层结点横向显示 */
+        PrintTree(bt->rchild, level + 1);               /*右子树第level+1层结点横向显示 */
         if (level != 1) {
             for (i = 1; i < 6 *(level - 1); i++)
-                printf(" "); 							/*输出空格*/
+                printf(" ");                            /*输出空格*/
             printf("----%c\n", bt->data);
         }else printf(" %c\n", bt->data);
-        PrintTree(bt->lchild, level + 1); 				/*左子树第level+1层结点横向显示 */
+        PrintTree(bt->lchild, level + 1);               /*左子树第level+1层结点横向显示 */
     }
-} 														/*PrintTree*/
+}                                                       /*PrintTree*/
 
 
-void Preorder(BTNode *bt) { 										/* 先根遍历以bt为根的二叉树 */
+void Preorder(BTNode *bt) {                                         /* 先根遍历以bt为根的二叉树 */
     if (bt) {
-        printf("%c",bt->data); 											/*访问根结点*/
-        Preorder(bt->lchild);									 	/*先根遍历左子树*/
-        Preorder(bt->rchild); 										/*先根遍历右子树*/
+        printf("%c\t",bt->data);                                            /*访问根结点*/
+        Preorder(bt->lchild);                                       /*先根遍历左子树*/
+        Preorder(bt->rchild);                                       /*先根遍历右子树*/
     }
-} 																	/* Preorder */
+}                                                                   /* Preorder */
 
 /*
 
-void Preorder2(BTNode *bt) { 							// 先序遍历二叉树bt非递归算法 ，S是BTNode *类型的栈
-	p = bt;
-	InitStact(S); 										//置栈空
-	while (p || !StactEmpty(S)) {
-		if(p) { 										// 二叉树非空
-			printf(p->data); 							//访问根结点
-			Push(S, p); 								//根指针进栈
-			p = p->lchild; 								//p移向左孩子
-		}else { 										//栈非空
-			Pop(S, p); 									//双亲结点出栈
-			p=p->rchild; 								//p移向右孩子
-		}
-	} 													// 二叉树空且栈空
+void Preorder2(BTNode *bt) {                            // 先序遍历二叉树bt非递归算法 ，S是BTNode *类型的栈
+    p = bt;
+    InitStact(S);                                       //置栈空
+    while (p || !StactEmpty(S)) {
+        if(p) {                                         // 二叉树非空
+            printf(p->data);                            //访问根结点
+            Push(S, p);                                 //根指针进栈
+            p = p->lchild;                              //p移向左孩子
+        }else {                                         //栈非空
+            Pop(S, p);                                  //双亲结点出栈
+            p=p->rchild;                                //p移向右孩子
+        }
+    }                                                   // 二叉树空且栈空
 
 }
-														//Preorder2
+                                                        //Preorder2
 */
 
 
-void Inorder(BTNode *bt) { 								/*中序遍历算法以bt为根的二叉树 */
+void Inorder(BTNode *bt) {                              /*中序遍历算法以bt为根的二叉树 */
     if (bt) {
-        Inorder(bt->lchild); 							/*中根遍历左子树*/
-        printf("%c",bt->data); 								/* 访问根结点 */
-        Inorder(bt->rchild); 							/* 中根遍历右子树*/
+        Inorder(bt->lchild);                            /*中根遍历左子树*/
+        printf("%c\t",bt->data);                                /* 访问根结点 */
+        Inorder(bt->rchild);                            /* 中根遍历右子树*/
     }
 } /*Inorder*/
 
 /*
-void Inorder2(BTNode *bt) { 							//中序遍历二叉树bt的非递归算法，S是BTNode *类型的栈
-	p = bt;
-	InitStact(S); 										//置栈空
-	while (p || !StactEmpty(S)) {
-		if (p) {
-			Push(S, p);
-			p = p->lchild;
-		}else {
-			Pop(S, p);
-			printf(p->data); 							// 访问根结点
-			p = p->rchild;
-		}
-	}
+void Inorder2(BTNode *bt) {                             //中序遍历二叉树bt的非递归算法，S是BTNode *类型的栈
+    p = bt;
+    InitStact(S);                                       //置栈空
+    while (p || !StactEmpty(S)) {
+        if (p) {
+            Push(S, p);
+            p = p->lchild;
+        }else {
+            Pop(S, p);
+            printf(p->data);                            // 访问根结点
+            p = p->rchild;
+        }
+    }
 }  //Inorder2
 */
 
@@ -153,7 +153,7 @@ void Postorder(BTNode *bt) { /* 后序遍历二叉树bt的递归算法 */
     if (bt) {
         Postorder(bt->lchild);
         Postorder(bt->rchild);
-        printf("%c",bt->data);
+        printf("%c\t",bt->data);
     }
 } /*Postorder*/
 
@@ -167,8 +167,12 @@ void DestroyTree(BTNode *bt) { /*销毁二叉树bt*/
 
 int main() {
     BTNode *BT = Creat_Bt();
+    PrintTree(BT, 1);
+    printf("\n先序\t");
     Preorder(BT);
+    printf("\n中序\t");
     Inorder(BT);
+    printf("\n后序\t");
     Postorder(BT);
     return 0;
 }

@@ -1,4 +1,3 @@
-
 #include <cstdio>
 #define MAXSIZE 100
 
@@ -46,15 +45,19 @@ int main() {
     int i;
     int res = 0;
     InitStack_Sq(S1);
+    printf("输入 0:判栈是否为空 1:入栈 2:出栈\n");
     while(scanf("%d",&i)!=EOF) {
         if(i==0) {
+            printf("判栈是否为空\t");
             res = Empty_Sq(S1);
             printf("%d",res);
         }else if(i==1) {
+            printf("入栈元素:\t");
             scanf("%d",&e1); //how to get an input in style of element type
             res = Push_Sq(S1,e1);
             printf("%d",res);
         }else if(i==2) {
+            printf("出栈元素:\t");
             res = Pop_Sq(S1,&e2);
             printf("%d\n%d",e2,res);
         }else return 404;
@@ -71,83 +74,75 @@ int main() {
 
 typedef char StackData;							//设置栈中元素类型为 字符型
 
-typedef struct { 								//顺序栈定义 
+typedef struct { 								//顺序栈定义
 	StackData *base; 							//栈底指针
 	StackData *top; 							//栈顶指针
-	int stacksize;								//当前已分配的存储空间 
-} SeqStack;										
+	int stacksize;								//当前已分配的存储空间
+} SeqStack;
 
 
 
 int StackEmpty (SeqStack *S) {					//判栈空,空则返回1  否则返回0
 	if( S->top == S->base ) {
-		return 1; 					
+		return 1;
 	}else return 0;
 }
-	
+
 int StackFull (SeqStack *S) {					//判栈满,满则返回1
 	if( S->top- S->base >= S-> stacksize ) {
-		return 1; 											
+		return 1;
 	}else {
 		return 0; 								//否则返回0
 	}
 }
 void InitStack ( SeqStack *S) { 				//栈初始化
 	S->base =( StackData *)malloc(STACK_INIT_SIZE * sizeof(StackData));
-	if (!S->base) { 
+	if (!S->base) {
 		exit(OVERFLOW);
 	}
 	S->top = S->base ;
-	S->stacksize= STACK_INIT_SIZE ; 
+	S->stacksize= STACK_INIT_SIZE ;
 	//return ok;
 }
 
-void Push (SeqStack *S, StackData x) {			//插入元素x为新的栈顶元素 
-	if ( StackFull (S) ){ 						//如果栈非空 												
+void Push (SeqStack *S, StackData x) {			//插入元素x为新的栈顶元素
+	if ( StackFull (S) ){ 						//如果栈非空
 		S->base =( StackData *)realloc(S->base , (S->stacksize+ STACKINCREMENT) *sizeof(StackData));
-		
+
 		////////////////////////////////////////////////
 		////////////////////////////////////////////////
 
 		if(! S->base) {							////////////////////////
 			exit(overflow); 					//存储分配失败
 		}
-		
-		S->top= S->base + S->stacksize;			//更新栈顶位置 
-		S->stacksize+= STACKINCREMENT; 		    //更新存储空间 
+
+		S->top= S->base + S->stacksize;			//更新栈顶位置
+		S->stacksize+= STACKINCREMENT; 		    //更新存储空间
 	}
 	*(S->top)=x;								//插入元素
 	(S->top)++;									//更新栈顶位置
 	//return ok;
-	
+
 	////////////////////////////////////////////////
 	////////////////////////////////////////////////
 }
 
-int Gettop (SeqStack *S, StackData &x) {		//若栈空返回0, 否则栈顶元素读到x并返回1 
+int Gettop (SeqStack *S, StackData &x) {		//若栈空返回0, 否则栈顶元素读到x并返回1
 	if ( StackEmpty(S) ) {
 		return 0;
 	}
 	x = *(S->top-1);
-	return 1; 
+	return 1;
 }
 
-int pop (SeqStack *S, StackData &x) {           //若栈空返回0, 否则栈顶元素退出到x并返回1 
+int pop (SeqStack *S, StackData &x) {           //若栈空返回0, 否则栈顶元素退出到x并返回1
 	if ( StackEmpty(S) ) {
 		return 0;
 	}
 	--(S->top);
 	x = *(S->top);
-	return 1; 
+	return 1;
 }
 */
-
-
-
-
-
-
-
-
 
 

@@ -1,3 +1,15 @@
+/*
+ * 输入输出规范
+ * 输入：元素1， 插入位置（元素2），元素2
+ * 输出：顺序表1，顺序表1，顺序表3
+ *
+ *
+ *
+ *
+ * 2018.6.18
+ *
+ * */
+
 #include <cstdio>
 #include <cstdlib>
 # define LIST_INIT_SIZE 100
@@ -33,6 +45,7 @@ char ListInsert_Sq(SqList &L, int i, int e) {
         L.elem = newbase;
         L.listsize += LISTINCREMENT;
     }
+
     int *q,  *p;
     q = &(L.elem[i - 1]);
     for(p = &(L.elem[L.length-1]);p >= q; --p)
@@ -62,7 +75,12 @@ int main() {
     int position;
     ElemType e, e1, e2;
     SqList List;
-    scanf("%d%d%d", &e1, &position, &e2);
+    printf("元素1：\t");
+    scanf("%d", &e1);
+    printf("插入位置：\t");
+    scanf("%d%", &position);
+    printf("元素2：\t");
+    scanf("%d", &e2);
 
     InitList_Sq(List);
     ListInsert_Sq(List, 1, e1);
@@ -80,6 +98,6 @@ int main() {
         printf("%d",List.elem[j]);
     }
     printf("\n");
-    printf("Hello, World!\n");
+    printf("Hello, 顺序表!\n");
     return 0;
 }
