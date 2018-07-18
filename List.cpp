@@ -11,9 +11,9 @@
  * */
 
 #include <cstdio>
-#include <cstdlib>
-# define LIST_INIT_SIZE 100
-# define LISTINCREMENT 10
+#include <stdlib.h>
+#define LIST_INIT_SIZE 100
+#define LISTINCREMENT 10
 
 typedef int ElemType;
 
