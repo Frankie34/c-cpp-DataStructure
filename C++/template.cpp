@@ -1,22 +1,26 @@
-#include<cstdio>
-#include<algorithm>
-using namespace std;
-const int maxn = 10000;
+/*
+int sum(int* begin, int* end) {
+	int *begin;
+	int ans = 0;
+	for(int *p = begin; p!= end;p++) {
+		ans += *p;
+	}
+	return ans;
+}
+*/
+
+template<typename T>
+T sum(T* begin, T* end) {
+	T *p = begin;
+	T ans = 0;
+	for(T *p = begin; p != end;p++)
+		ans = ans + *p;
+	return ans;
+}
 
 int main() {
-	int n, q, x, a[maxn], kase = 0;
-	while(scanf("%d%d", &n, &q) == 2 && n) {
-		printf("CASE# %d:\n", ++kase);
-		for(int i = 0;i < n;i++) {
-			scanf("%d", &a[i]);
-		}
-		sort(a, a+n);
-		while(q--) {
-			scanf("%d", &x);
-			int p = lower_bound(a, a+n, x) - a;
-			if(a[p] == x)printf("%d found at %d\n", x, p+1);
-			else printf("%d not found\n", x);
-		}
-	}
-	return 0;
+	double a[] = {1.1, 2.2, 3.3, 4.4};
+	cout << sum(a, a+4) << "\n";
+	Point b[] = {Point(1,2), Point(3,4), Point(5,6), Point(7,8) };
+	cout << sum(b, b+4) << "\n";
 }
