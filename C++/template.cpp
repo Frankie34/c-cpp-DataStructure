@@ -9,7 +9,22 @@ int sum(int* begin, int* end) {
 }
 */
 
-template<typename T>
+template <typename T>
+
+struct Point {
+	T x, y;
+	Point(T x=0, T y=0):x(x), y(y) {}//x(x) stands this.x = x;
+};
+
+Point<T> operator + (const Point<T>& A, const Point<T>& B) {
+	return Point<T>(A.x+B.x, A.y+B.y);
+}
+
+ostream& operator << (ostream &out, const Point<T>& P) {
+	out << "(" << p.x << "," << p.y << ")";
+	return out;
+}
+
 T sum(T* begin, T* end) {
 	T *p = begin;
 	T ans = 0;
@@ -19,8 +34,9 @@ T sum(T* begin, T* end) {
 }
 
 int main() {
-	double a[] = {1.1, 2.2, 3.3, 4.4};
-	cout << sum(a, a+4) << "\n";
-	Point b[] = {Point(1,2), Point(3,4), Point(5,6), Point(7,8) };
-	cout << sum(b, b+4) << "\n";
+	Point<int> a(1,2), b(3,4);
+	Point<double> c(1.1,2.2), d(3.3, 4.4);
+	cout << a+b << "" << c+d << "\n";
+	return 0;
 }
+
