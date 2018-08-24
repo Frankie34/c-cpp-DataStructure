@@ -25,7 +25,7 @@ int main() {
 		if(s[0] == '#') break;
 		words.push_back(s);
 		string r = repr(s);
-		if(!cnt.count(r))cnt[r] = 0;
+		if(!cnt.count(r))cnt[r] = 0;//check if r is an elem of cnt
 		cnt[r]++;
 	}
 	vector<string> ans;
