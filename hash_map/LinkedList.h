@@ -5,7 +5,7 @@
 #include<Item.h>
 #include<string>
 
-class LinkedList {
+class LinkedList: public Item {
 public:
     Item *head;
     int length;

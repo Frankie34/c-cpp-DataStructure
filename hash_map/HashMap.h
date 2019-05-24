@@ -5,7 +5,7 @@
 #include<string>
 #include<LinkedList>
 
-class HashTable {
+class HashTable: public LinkedList{
 public:
     LinkedList *array;
     int length;
